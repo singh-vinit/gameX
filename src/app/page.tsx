@@ -1,7 +1,11 @@
+import { GameCard } from "@/components/GameCard";
+import { Header } from "@/components/Header";
+
 export default function Home() {
   return (
-    <div>
-      <h1>home</h1>
-    </div>
+    <>
+      <Header />
+      <GameCard />
+    </>
   );
 }
