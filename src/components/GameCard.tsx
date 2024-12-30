@@ -9,7 +9,7 @@ import {
 export function GameCard() {
   return (
     <div>
-      <Card className="w-96 bg-white shadow-lg rounded-xl overflow-hidden">
+      <Card className="w-96 shadow-lg rounded-xl overflow-hidden border-none">
         <CardHeader>
           <h3>game video</h3>
         </CardHeader>

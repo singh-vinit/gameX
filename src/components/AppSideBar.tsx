@@ -1,4 +1,3 @@
-"use client";
 import {
   Sidebar,
   SidebarContent,
@@ -87,10 +86,8 @@ const genreItems = [
 ];
 
 export function AppSidebar() {
-  const { isMobile } = useSidebar();
   return (
     <>
-      {isMobile && <SidebarTrigger />}
       <Sidebar className="text-center">
         <SidebarHeader className="font-bold text-2xl">GameX</SidebarHeader>
         <SidebarContent>
