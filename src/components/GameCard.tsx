@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Card,
   CardHeader,
@@ -5,19 +6,26 @@ import {
   CardContent,
   CardFooter,
 } from "./ui/card";
+interface GameCardProps {
+  imgUrl: string;
+  title: string;
+  platform?: string;
+}
 
-export function GameCard() {
+export function GameCard({ imgUrl, title, platform }: GameCardProps) {
   return (
     <div>
-      <Card className="w-96 shadow-lg rounded-xl overflow-hidden border-none">
-        <CardHeader>
-          <h3>game video</h3>
-        </CardHeader>
+      <Card className="w-[310px] shadow-lg rounded-2xl hover:scale-95 transition-transform ease-in-out delay-100 duration-100">
+        <img
+          src={imgUrl}
+          alt={title}
+          className="w-full h-[240px] object-cover rounded-t-2xl"
+        />
         <CardContent>
-          <p>Game Description</p>
+          <p>{title}</p>
         </CardContent>
         <CardFooter>
-          <p>xbox, window</p>
+          <p>{platform}</p>
         </CardFooter>
       </Card>
     </div>
