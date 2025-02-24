@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Card,
   CardHeader,
@@ -21,8 +20,8 @@ export function GameCard({ imgUrl, title, platform }: GameCardProps) {
           alt={title}
           className="w-full h-[240px] object-cover rounded-t-2xl"
         />
-        <CardContent>
-          <p>{title}</p>
+        <CardContent className="text-center p-1">
+          <p className="font-extrabold text-lg">{title}</p>
         </CardContent>
         <CardFooter>
           <p>{platform}</p>
