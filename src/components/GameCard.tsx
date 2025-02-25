@@ -18,10 +18,10 @@ export function GameCard({ imgUrl, title, platform }: GameCardProps) {
         <img
           src={imgUrl}
           alt={title}
-          className="w-full h-[240px] object-cover rounded-t-2xl"
+          className="w-full h-[150px] object-cover rounded-t-2xl"
         />
         <CardContent className="text-center p-1">
-          <p className="font-extrabold text-lg">{title}</p>
+          <p className="font-extrabold text-xl">{title}</p>
         </CardContent>
         <CardFooter>
           <p>{platform}</p>
