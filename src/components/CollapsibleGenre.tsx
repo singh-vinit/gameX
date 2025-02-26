@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -16,6 +15,8 @@ import {
 import { ChevronDown } from "lucide-react";
 import { SidebarGroup, SidebarGroupLabel } from "@/components/ui/sidebar";
 
+import { useQuery } from "@tanstack/react-query";
+
 interface Props {
   subheading: string;
 }
@@ -24,9 +25,15 @@ import { useFetch } from "@/hooks/useFetch";
 import { Genres } from "@/types/genres";
 
 export function CollapsibleGenre({ subheading }: Props) {
-  const { data, loading } = useFetch("genres");
+  const { data, isPending } = useQuery({
+    queryKey: ["genres", "fetchGenres"],
+    queryFn: () => useFetch("genres"),
+  });
+
   const items = data as Genres;
-  if (loading) return <div>Loading...</div>;
+
+  if (isPending) return <div>loading...</div>;
+
   return (
     <Collapsible defaultOpen className="group/collapsible">
       <SidebarGroup>

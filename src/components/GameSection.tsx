@@ -1,14 +1,33 @@
 "use client";
 import { Games } from "@/types/games";
-import { useFetch } from "@/hooks/useFetch";
 import { GameCard } from "./GameCard";
+import { useQuery } from "@tanstack/react-query";
+import { useFetch } from "@/hooks/useFetch";
 
 export function GameSection() {
-  const { data, loading } = useFetch("games");
+  //first fetch the games
+  const { data, isPending } = useQuery({
+    queryKey: ["games", "fetchGames"],
+    queryFn: () => useFetch("games"),
+  });
+
+  if (isPending) return <div>loading...</div>;
+
   const items = data as Games;
-  if (loading) return <div>Loading...</div>;
+
+  //fetch the game trailers based on ids
+  // const videoQueries = useQueries({
+  //   queries: items.results.map((curr) => {
+  //     return {
+  //       queryKey: ["videos", curr.id],
+  //       queryFn: () => fetchVideos(curr.id),
+  //       enabled: !!items,
+  //     };
+  //   }),
+  // });
+
   return (
-    <div className="grid grid-cols-3 gap-2 p-4">
+    <div className="grid md:grid-cols-3 grid-cols-2 gap-2 p-4">
       {items.results.map((curr) => (
         <GameCard
           key={curr.id}

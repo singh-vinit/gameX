@@ -21,12 +21,18 @@ interface Props {
 
 import { useFetch } from "@/hooks/useFetch";
 import { Platforms } from "@/types/platforms";
-import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
 
 export function CollapsiblePlatform({ subheading }: Props) {
-  const { data, loading } = useFetch("platforms");
+  const { data, isPending } = useQuery({
+    queryKey: ["platforms", "fetchPlatforms"],
+    queryFn: () => useFetch("platforms"),
+  });
+
   const items = data as Platforms;
-  if (loading) return <div>Loading...</div>;
+
+  if (isPending) return <div>loading...</div>;
+
   return (
     <Collapsible defaultOpen className="group/collapsible">
       <SidebarGroup>
