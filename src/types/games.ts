@@ -15,8 +15,14 @@ type Game = {
   name: string;
   slug: string;
   background_image: string;
+  released: string;
+  rating: number;
   genres: Genres[];
   parent_platforms: Platforms[];
+  esrb_rating: {
+    name: string;
+    slug: string;
+  };
 };
 
 export type Games = {

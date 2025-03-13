@@ -1,41 +1,30 @@
 "use client";
-import { Games } from "@/types/games";
-import { GameCard } from "./GameCard";
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "@/hooks/useFetch";
+import { GameCard } from "./GameCard";
+import { Games } from "@/types/games";
 
 export function GameSection() {
-  //first fetch the games
   const { data, isPending } = useQuery({
     queryKey: ["games", "fetchGames"],
     queryFn: () => useFetch("games"),
   });
-
   if (isPending) return <div>loading...</div>;
 
-  const items = data as Games;
-
-  //fetch the game trailers based on ids
-  // const videoQueries = useQueries({
-  //   queries: items.results.map((curr) => {
-  //     return {
-  //       queryKey: ["videos", curr.id],
-  //       queryFn: () => fetchVideos(curr.id),
-  //       enabled: !!items,
-  //     };
-  //   }),
-  // });
+  const games = data as Games;
 
   return (
-    <div className="grid md:grid-cols-3 grid-cols-2 gap-2 p-4">
-      {items.results.map((curr) => (
+    <div className="grid grid-cols-4 gap-4 p-6">
+      {games.results.map((game) => (
         <GameCard
-          key={curr.id}
-          imgUrl={curr.background_image}
-          title={curr.name}
-          platform={curr.parent_platforms
-            .map((platform) => platform.platform.name)
-            .join(",")}
+          key={game.id}
+          imgUrl={game.background_image}
+          title={game.name}
+          platforms={game.parent_platforms}
+          rating={game.rating}
+          released={game.released}
+          esrb={game.esrb_rating.name}
+          genres={game.genres}
         />
       ))}
     </div>

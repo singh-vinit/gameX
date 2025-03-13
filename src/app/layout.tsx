@@ -38,10 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ReactQueryProvider>
-            <SidebarProvider>
-              <AppSidebar />
               <main className="w-full">{children}</main>
-            </SidebarProvider>
           </ReactQueryProvider>
         </ThemeProvider>
       </body>
