@@ -44,7 +44,7 @@ export function CollapsiblePlatform({ subheading }: Props) {
         </SidebarGroupLabel>
         <CollapsibleContent>
           <SidebarMenuSub>
-            {items.results.map((curr) => (
+            {/* {items.results.map((curr) => (
               <SidebarMenuSubItem key={curr.id}>
                 <SidebarMenuSubButton asChild>
                   <a href="#">
@@ -52,7 +52,7 @@ export function CollapsiblePlatform({ subheading }: Props) {
                   </a>
                 </SidebarMenuSubButton>
               </SidebarMenuSubItem>
-            ))}
+            ))} */}
           </SidebarMenuSub>
         </CollapsibleContent>
       </SidebarGroup>

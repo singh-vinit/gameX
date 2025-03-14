@@ -10,11 +10,10 @@ export function GameSection() {
     queryFn: () => useFetch("games"),
   });
   if (isPending) return <div>loading...</div>;
-
   const games = data as Games;
 
   return (
-    <div className="grid grid-cols-4 gap-4 p-6">
+    <div className={`grid grid-cols-3 gap-4 p-6`}>
       {games.results.map((game) => (
         <GameCard
           key={game.id}

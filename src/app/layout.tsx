@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { AppSidebar } from "@/components/AppSidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import ReactQueryProvider from "@/lib/ReactQueryProvider";
 
 const geistSans = Geist({
@@ -37,9 +37,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ReactQueryProvider>
-              <main className="w-full">{children}</main>
-          </ReactQueryProvider>
+          <SidebarProvider>
+            <ReactQueryProvider>
+              <AppSidebar />
+              <main className="w-full h-full">{children}</main>
+            </ReactQueryProvider>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
