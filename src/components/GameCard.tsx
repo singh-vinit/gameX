@@ -1,7 +1,6 @@
-import { Card, CardContent, CardFooter } from "./ui/card";
+import { Card } from "./ui/card";
 import Star from "../../public/star.png";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import { Badge } from "@/components/ui/badge";
 
 type Platforms = {
@@ -29,7 +28,6 @@ interface GameCardProps {
 export function GameCard({
   imgUrl,
   title,
-  platforms,
   rating,
   released,
   esrb,
@@ -38,9 +36,12 @@ export function GameCard({
   return (
     <div>
       <Card className="relative w-[240px] h-[300px] rounded-xl border-none transition-all duration-300 ease-in-out hover:scale-105">
-        <img
+        <Image
           src={imgUrl}
           alt={title}
+          width={100}
+          height={100}
+          unoptimized={true}
           className="h-full w-full object-cover rounded-xl hover:blur-sm hover:brightness-50 transition-all duration-300 ease-in-out"
         />
         <div className="absolute bottom-0 bg-black/45 backdrop-blur-md text-white w-full p-2 rounded-b-xl">
