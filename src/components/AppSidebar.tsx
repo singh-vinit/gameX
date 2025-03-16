@@ -5,17 +5,25 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 
-import { CollapsiblePlatform } from "./CollapsiblePlatform";
-import { CollapsibleGenre } from "./CollapsibleGenre";
+import { NewRelease } from "./NewRelease";
+import { Top } from "./Top";
+import { Browse } from "./Browse";
 
 export function AppSidebar() {
   return (
     <>
-      <Sidebar className="text-center">
-        <SidebarHeader className="font-bold text-3xl mb-10">Gamex</SidebarHeader>
+      <Sidebar className="text-center border-none">
+        <SidebarHeader className="font-bold text-3xl mb-4 ">
+          Gamex
+        </SidebarHeader>
         <SidebarContent>
-          <CollapsiblePlatform subheading="Platforms" />
-          <CollapsibleGenre subheading="Genres" />
+          {/* ########## */}
+          <NewRelease />
+          {/* ########## */}
+          <Top />
+          {/* ########## */}
+          <Browse />
+          {/* ########## */}
         </SidebarContent>
         <SidebarFooter />
       </Sidebar>

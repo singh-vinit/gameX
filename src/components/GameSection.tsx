@@ -10,9 +10,11 @@ import { ChevronLeft } from "lucide-react";
 export function GameSection() {
   const [page, setPage] = useState(1);
 
+  const apikey = process.env.NEXT_PUBLIC_API_KEY;
+
   function fetchGames(page = 1) {
     return fetch(
-      `https://api.rawg.io/api/games?key=fd9de0b1e991460c9c45169d797ae783&page=${page}`
+      `https://api.rawg.io/api/games?key=${apikey}&page=${page}`
     ).then((res) => res.json());
   }
 
@@ -51,7 +53,7 @@ export function GameSection() {
           <ChevronLeft />
           prev
         </Button>
-          <span className="px-4 font-semibold">{page}</span>
+        <span className="px-4 font-semibold">{page}</span>
         <Button
           onClick={() => {
             if (games.next) {
