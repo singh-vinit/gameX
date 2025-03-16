@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="w-full h-full relative">
       <Navbar />
-      <div className="w-[98%] mx-auto">
+      <div className="w-[98%] mx-auto pb-8">
         <Header />
         <GameSection />
       </div>
